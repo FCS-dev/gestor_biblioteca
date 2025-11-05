@@ -4,13 +4,22 @@ import json
 
 def mostrar_menu():
     print("""
-          \n --- GESTOR DE VIAJES ---
-          1. Agretar libro
-          2. Buscar Libro por Autor
-          3. Guardar Informacion
+          \n
+------ GESTOR DE BIBLIOTECA -----
+              MENU
+|===============================|
+|    1. Mostrar Libros          |
+|    2. Agregar Libro           |
+|    3. Prestar Libro           |
+|    4. Devolver Libro          |
+|    5. Buscar Libro por Autor  |
+|    6. Salir y guardar en JSON |
+|===============================| 
           """)
-    opc = input("INgrese su opcion -> ")
-    return opc
+
+    opcion = input("Ingrese su opcion -> ").strip()
+
+    return opcion
 
 
 def cargar_libros():

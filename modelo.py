@@ -54,7 +54,16 @@ def agregar_libro(libros):
 
 
 def prestar_libro(libros):
-    pass
+    try:
+        seleccion = int(
+            input("seleccione el numero de libro que quere tomar prestado: ")
+        )
+        seleccion += 1
+        libros[seleccion]
+    except ValueError:
+        print("seleccion no válida")
+
+    return seleccion
 
 
 def devolver_libro(libros):
