@@ -50,7 +50,11 @@ class Libro:
 
 
 def agregar_libro(libros):
-    pass
+    print("\n---Agregar Libro---")
+    print("(Deje en blanco el titulo o autor para cancelar)")
+    titulo = input("Título : ").strip()
+    autor = input("Autor   : ").strip()
+    anio = input("Año      : ").strip()
 
 
 def prestar_libro(libros):
@@ -80,12 +84,16 @@ def guardar_info_json(libros):
 
 def mostrar_libros(libros):
     if libros:
+        print("\n---Listado de libros---")
         print(
-            "Autor                  Titulo                 Año    Estado"
-            "\n-----------------------------------------------------------"
+            "Autor                          Titulo                           Año      Estado"
+            "\n-------------------------------------------------------------------------------"
         )
         for l in libros:
+            autor = l.autor[:30]
+            libro = l.titulo[:30]
+            anho = l.anio
             estado = "Disponible" if l.estado else "Prestado"
-            print(f"{l.autor.ljust(20)} {l.titulo.ljust(20)} ({l.anio}) => {estado}")
+            print(f"{autor.ljust(30)} {libro.ljust(30)}   {anho} => {estado}")
     else:
         print("\nNo hay libros para mostrar")
