@@ -17,7 +17,18 @@ def agregar_libro(libros):
     pass
 
 def prestar_libro(libros):
-    pass                
+    
+    try:
+        seleccion = int(input('seleccione el numero de libro que quere tomar prestado: '))
+        seleccion +=1
+        libros[seleccion]
+    except:
+        print('seleccion no válida')
+        cont
+    
+    return seleccion
+    
+                    
 
 def devolver_libro(libros):
     pass

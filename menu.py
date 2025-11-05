@@ -9,40 +9,40 @@ def main():
         
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
-        # TODO Menu                                                 
-        variable = utils.mostrar_menu()                               # Javier
+        # ToDo Menu                                                 
+        variable = utils.mostrar_menu()                             # Javier [✅]
         match variable:
-            case 1:
+            case "1":
                 
                 modelo.mostrar_libros()                             # Franco
                 
-            case 2: 
+            case "2": 
                 
                 #TODO Agregar libros en modelo una funcion 
                 modelo.agregar_libro(libros)
                    
-            case 3:                                                 # Javier
+            case "3":                                                 # Javier
                 
                 #TODO Prestar
                 modelo.prestar_libro(libros)
                 
-            case 4:                                                 # Franco
+            case "4":                                                 # Franco
                 
                 #TODO
                 modelo.devolver_libro(libros)
-            case 5:                                                 # Javier
+            case "5":                                                 # Javier
                 
                 #TODO
                 modelo.buscar_libro_autor(libros)
                 
-            case 6:                                                 # Franco
+            case "6":                                                 # Franco
                 
                 #TODO Agregar libros
                 modelo.guardar_info_json(libros)
             case _:                                                 # Javier
                             
-                #TODO
-                print('Opcion no válida')                                            
+                input('Opcion no válida. Pulse Intro para continuar')
+                                                            
 
 
 
