@@ -1,51 +1,44 @@
-import os 
+import os
 import utils
 import modelo
-#ToDo Readme 
-                                                       
+# ToDo Readme
+
+
 def main():
     # ToDo cargar_libros                                            # Franco
     libros = utils.cargar_libros()
-        
+
     while True:
-        os.system('cls' if os.name == 'nt' else 'clear')
-        # TODO Menu                                                 
-        variable = utils.mostrar_menu()                               # Javier
+        os.system("cls" if os.name == "nt" else "clear")
+        # TODO Menu
+        variable = utils.mostrar_menu()  # Javier
         match variable:
-            case 1:
-                
-                modelo.mostrar_libros()                             # Franco
-                
-            case 2: 
-                
-                #TODO Agregar libros en modelo una funcion 
+            case "1":
+                modelo.mostrar_libros(libros)  # Franco
+            case "2":
+                # TODO Agregar libros en modelo una funcion
                 modelo.agregar_libro(libros)
-                   
-            case 3:                                                 # Javier
-                
-                #TODO Prestar
+            case "3":  # Javier
+                # TODO Prestar
                 modelo.prestar_libro(libros)
-                
-            case 4:                                                 # Franco
-                
-                #TODO
+
+            case "4":  # Franco
+                # TODO
                 modelo.devolver_libro(libros)
-            case 5:                                                 # Javier
-                
-                #TODO
+            case "5":  # Javier
+                # TODO
                 modelo.buscar_libro_autor(libros)
-                
-            case 6:                                                 # Franco
-                
-                #TODO Agregar libros
+
+            case "6":  # Franco
+                # TODO Agregar libros
                 modelo.guardar_info_json(libros)
-            case _:                                                 # Javier
-                            
-                #TODO
-                print('Opcion no válida')                                            
+            case "7":  # Salir
+                break
+            case _:  # Javier
+                # TODO
+                print("\nOpcion no válida")
+        input("\nPulse <ENTER> para continuar")
 
 
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
