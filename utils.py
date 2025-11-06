@@ -49,5 +49,6 @@ def cargar_libros():
             Libro("En busca del tiempo perdido", "Marcel Proust", 1913, True),
             Libro("Ulises", "James Joyce", 1922, True),
             Libro("El señor de los anillos", "J. R. R. Tolkien", 1954, True),
+            Libro("Otro libro de Jane Austen", "Jane Austen", 1813, True),
         ]
     return libros_def

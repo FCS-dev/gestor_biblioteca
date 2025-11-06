@@ -26,7 +26,9 @@ def main():
                 modelo.devolver_libro(libros)
             case "5":  # Javier
                 # TODO
-                modelo.buscar_libro_autor(libros)
+                libros_encontrados = modelo.buscar_libro_autor(libros)
+                modelo.mostrar_lista(libros_encontrados)
+                
             case "6":  # Franco
                 # TODO Agregar libros
                 modelo.guardar_info_json(libros)
