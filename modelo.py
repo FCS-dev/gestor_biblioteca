@@ -74,22 +74,23 @@ def agregar_libro(libros):
 
 
 def prestar_libro(libros):
-    print('\n---Opcion 3 Prestar Libro---')
-    mostrar_libros(libros,"d")
+    print("\n---Opcion 3 Prestar Libro---")
+    mostrar_libros(libros, "d")
     try:
         seleccion = int(
             input("seleccione el numero de libro que quere tomar prestado: ")
         )
         if 0 < seleccion <= len(libros):
-            if libros[seleccion-1].estado: 
-                libros[seleccion-1].cambiar_estado()
+            if libros[seleccion - 1].estado:
+                libros[seleccion - 1].cambiar_estado()
             else:
-                print('El libro no esta disponible')
+                print("El libro no esta disponible")
         else:
-            print('Seleccion fuera de rango')
-            
+            print("Seleccion fuera de rango")
+
     except ValueError:
         print("seleccion no válida")
+
 
 def devolver_libro(libros):
     mostrar_libros(libros, "p")
@@ -114,15 +115,20 @@ def devolver_libro(libros):
 
 
 def buscar_libro_autor(libros):
-
     autor_buscar = input("Ingrese el nombre del Autor: ").strip().lower()
-    listado_resultado = [elemento for elemento in libros if autor_buscar in elemento.autor.lower()]
-    if not listado_resultado: 
+    if not autor_buscar:
+        print("Debe introducir un texto para buscar")
+        return
+    listado_resultado = [
+        elemento for elemento in libros if autor_buscar in elemento.autor.lower()
+    ]
+    if not listado_resultado:
         print("Autor no encontrado")
     else:
-        mostrar_libros(listado_resultado,"f")
-                
-def mostrar_libros(libros,alcance):
+        mostrar_libros(listado_resultado, "f")
+
+
+def mostrar_libros(libros, alcance):
     if libros:
         match alcance:
             case "t":  # Todos los libros

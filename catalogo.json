@@ -27,7 +27,7 @@
     "titulo": "Moby Dick",
     "autor": "Herman Melville",
     "anio": 1851,
-    "estado": true
+    "estado": false
   },
   {
     "titulo": "Cien años de soledad",
@@ -63,6 +63,12 @@
     "titulo": "asdf",
     "autor": "asdf",
     "anio": 1500,
+    "estado": true
+  },
+  {
+    "titulo": "Las dos torres",
+    "autor": "JRR Tokien",
+    "anio": 1970,
     "estado": true
   }
 ]
