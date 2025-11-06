@@ -1,0 +1,74 @@
+[
+  {
+    "titulo": "Don Quijote de la Mancha",
+    "autor": "Miguel de Cervantes",
+    "anio": 1605,
+    "estado": true
+  },
+  {
+    "titulo": "Hamlet",
+    "autor": "William Shakespeare",
+    "anio": 1603,
+    "estado": true
+  },
+  {
+    "titulo": "Orgullo y prejuicio",
+    "autor": "Jane Austen",
+    "anio": 1813,
+    "estado": true
+  },
+  {
+    "titulo": "Crimen y castigo",
+    "autor": "Fiódor Dostoyevski",
+    "anio": 1866,
+    "estado": true
+  },
+  {
+    "titulo": "Moby Dick",
+    "autor": "Herman Melville",
+    "anio": 1851,
+    "estado": false
+  },
+  {
+    "titulo": "Cien años de soledad",
+    "autor": "Gabriel García Márquez",
+    "anio": 1967,
+    "estado": true
+  },
+  {
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "anio": 1949,
+    "estado": true
+  },
+  {
+    "titulo": "En busca del tiempo perdido",
+    "autor": "Marcel Proust",
+    "anio": 1913,
+    "estado": true
+  },
+  {
+    "titulo": "Ulises",
+    "autor": "James Joyce",
+    "anio": 1922,
+    "estado": true
+  },
+  {
+    "titulo": "El señor de los anillos",
+    "autor": "J. R. R. Tolkien",
+    "anio": 1954,
+    "estado": true
+  },
+  {
+    "titulo": "asdf",
+    "autor": "asdf",
+    "anio": 1500,
+    "estado": true
+  },
+  {
+    "titulo": "Las dos torres",
+    "autor": "JRR Tokien",
+    "anio": 1970,
+    "estado": true
+  }
+]

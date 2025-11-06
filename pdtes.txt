@@ -1,0 +1,2 @@
+elaborar readme.md según indicaciones
+comentar el código
