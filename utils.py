@@ -1,5 +1,8 @@
 from pathlib import Path
 import json
+from modelo import Libro
+
+DATA_PATH = Path(__file__).parent / "catalogo.json"
 
 
 def mostrar_menu():
@@ -23,20 +26,17 @@ def mostrar_menu():
 
 
 def cargar_libros():
-    from modelo import Libro
-
-    DATA_PATH = Path(__file__).parent / "libros.json"
     libros_def = []
     if DATA_PATH.exists():
         try:
             with DATA_PATH.open("r", encoding="utf-8") as f:
-                libros_def = json.load(f)
+                libros_con_dict = json.load(f)
         except json.JSONDecodeError:
             print("ERROR: El archivo JSON está dañado o vacío.")
-            return libros_def
+            return []
         except Exception as e:
             print("ERROR inesperado:", type(e).__name__, e)
-            return libros_def
+            return []
     else:
         libros_def = [
             Libro("Don Quijote de la Mancha", "Miguel de Cervantes", 1605, True),
@@ -50,4 +50,25 @@ def cargar_libros():
             Libro("Ulises", "James Joyce", 1922, True),
             Libro("El señor de los anillos", "J. R. R. Tolkien", 1954, True),
         ]
+    for li in libros_con_dict:
+        libros_def.append(Libro(li["titulo"], li["autor"], li["anio"], li["estado"]))
     return libros_def
+
+
+def guardar_info_json(libros):
+    # Convirtiendo cada class Libro() (los elementos de la lista "libros"),
+    # en diccionarios, y agregarlos a una nueva lista libros_json
+    libros_json = []
+    for li in libros:
+        libro_dict = {
+            "titulo": li.titulo,
+            "autor": li.autor,
+            "anio": li.anio,
+            "estado": li.estado,
+        }
+        libros_json.append(libro_dict)
+    try:
+        with DATA_PATH.open("w", encoding="utf-8") as f:
+            json.dump(libros_json, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print("ERROR inesperado:", type(e).__name__, e)
