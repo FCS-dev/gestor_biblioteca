@@ -1,29 +1,30 @@
 import os
 import utils
 import modelo
-# ToDo Readme
 
 
 def main():
-    # ToDo cargar_libros                                            # Franco
     libros = utils.cargar_libros()
-
     while True:
+        cnt_prestados = sum([1 for libro in libros if not libro.estado])
         os.system("cls" if os.name == "nt" else "clear")
-        # ToDo Menu
-        variable = utils.mostrar_menu()  # Javier [✅]
+        variable = utils.mostrar_menu()
         match variable:
             case "1":
-                modelo.mostrar_libros(libros)  # Franco
+                modelo.mostrar_libros(libros, "t")
             case "2":
-                # TODO Agregar libros en modelo una funcion
                 modelo.agregar_libro(libros)
             case "3":  # Javier
                 # TODO Prestar
-                modelo.prestar_libro(libros)
-            case "4":  # Franco
-                # TODO
-                modelo.devolver_libro(libros)
+                if cnt_prestados < len(libros):
+                    modelo.prestar_libro(libros)
+                else:
+                    print("\nNo hay libros disponibles para prestar")
+            case "4":
+                if cnt_prestados > 0:
+                    modelo.devolver_libro(libros)
+                else:
+                    print("\nNo hay libros pendientes para devolver")
             case "5":  # Javier
                 # TODO
                 libros_encontrados = modelo.buscar_libro_autor(libros)
@@ -33,8 +34,8 @@ def main():
                 # TODO Agregar libros
                 modelo.guardar_info_json(libros)
                 break
-            case _:  # Javier
-                print("\nOpcion no válida")
+            case _:
+                print("\nOpción no válida")
         input("\nPulse Intro para continuar")
 
 

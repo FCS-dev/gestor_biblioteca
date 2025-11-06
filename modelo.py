@@ -3,7 +3,7 @@ class Libro:
         self.__titulo = titulo
         self.__autor = autor
         self.__anio = anio
-        self.__estado = estado
+        self.__estado = estado  # True = Disponible / False = No disponible
 
     def __repr__(self):
         return f'Libro("{self.__titulo}", "{self.__autor}", {self.__anio}, "{self.__estado}")'
@@ -50,7 +50,27 @@ class Libro:
 
 
 def agregar_libro(libros):
-    pass
+    print("\n--- Agregar Libro ---")
+    titulo = input("\nTítulo     : ").strip()
+    autor = input("Autor      : ").strip()
+    str_anio = input("Año (+1500): ").strip()
+    # Validación: str_anio debe ser un int
+    try:
+        anio = int(str_anio)
+    except ValueError:
+        print("El año indicado no es válido")
+        return
+    # Validación: titulo y autor deben tener contenido
+    if titulo and autor:
+        # Validación: anio debe ser +1500
+        if anio < 1500:
+            print("El año debe ser mayor a 1500")
+            return
+        libros.append(Libro(titulo, autor, anio))
+        print(f"\nEl libro '{titulo}' ha sido agregado correctamente")
+    else:
+        print("\nDatos incompletos. Proceso cancelado.")
+        return
 
 
 def prestar_libro(libros):
@@ -67,7 +87,25 @@ def prestar_libro(libros):
 
 
 def devolver_libro(libros):
-    pass
+    mostrar_libros(libros, "p")
+    str_id = input("\nId del libro que desea devolver: ").strip()
+    try:
+        id = int(str_id) - 1
+    except ValueError:
+        print("\nEl id indicado no es número")
+        return
+    id = int(str_id) - 1
+    if 0 <= id < len(libros):
+        esta_prestado = libros[id].estado
+        if (
+            not esta_prestado
+        ):  # Para devolver el libro, debe estar prestado (estado=False)
+            libros[id].cambiar_estado()
+            print(f"\nEl libro: '{libros[id].titulo}', ha sido marcado como devuelto")
+        else:
+            print("\nEl libro indicado no esta pendiente de devolución")
+    else:
+        print("\nEl id indicado no es número válido")
 
 
 def buscar_libro_autor(libros):
@@ -105,12 +143,39 @@ def guardar_info_json(libros):
 
 def mostrar_libros(libros):
     if libros:
+        match alcance:
+            case "t":  # Todos los libros
+                titulo = "\n--- Listado de libros ---"
+            case "p":  # libros prestados
+                titulo = "\n--- Libros prestados ---"
+            case "d":  # libros disponibles
+                titulo = "\n--- Libros disponibles ---"
+            case "f":  # libros con filtro (Buscar)
+                titulo = "\n--- Libros encontrados ---"
+            case _:
+                print("\n(ERROR: Alcance no válido!!!)")
+                return
+        print(titulo)
         print(
-            "Autor                  Titulo                 Año    Estado"
-            "\n-----------------------------------------------------------"
+            "Id  Autor                          Titulo                           Año      Estado"
+            "\n-----------------------------------------------------------------------------------"
         )
-        for l in libros:
-            estado = "Disponible" if l.estado else "Prestado"
-            print(f"{l.autor.ljust(20)} {l.titulo.ljust(20)} ({l.anio}) => {estado}")
+        for idx, li in enumerate(libros):
+            if (
+                alcance == "p" and li.estado
+            ):  # se pide "Pendientes" pero estado es True => no listar (continue)
+                continue
+            if (
+                alcance == "d" and not li.estado
+            ):  # se pide "Disponibles" pero estado es False => no listar (continue)
+                continue
+            indice = str(idx + 1)
+            autor = li.autor[:30]
+            libro = li.titulo[:30]
+            anho = li.anio
+            estado = "Disponible" if li.estado else "Prestado"
+            print(
+                f"{indice.ljust(2)}  {autor.ljust(30)} {libro.ljust(30)}   {anho} => {estado}"
+            )
     else:
         print("\nNo hay libros para mostrar")
