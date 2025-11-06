@@ -3,7 +3,7 @@
     "titulo": "Don Quijote de la Mancha",
     "autor": "Miguel de Cervantes",
     "anio": 1605,
-    "estado": false
+    "estado": true
   },
   {
     "titulo": "Hamlet",
@@ -21,7 +21,7 @@
     "titulo": "Crimen y castigo",
     "autor": "Fiódor Dostoyevski",
     "anio": 1866,
-    "estado": false
+    "estado": true
   },
   {
     "titulo": "Moby Dick",
@@ -57,6 +57,12 @@
     "titulo": "El señor de los anillos",
     "autor": "J. R. R. Tolkien",
     "anio": 1954,
-    "estado": false
+    "estado": true
+  },
+  {
+    "titulo": "asdf",
+    "autor": "asdf",
+    "anio": 1500,
+    "estado": true
   }
 ]

@@ -74,17 +74,22 @@ def agregar_libro(libros):
 
 
 def prestar_libro(libros):
+    print('\n---Opcion 3 Prestar Libro---')
+    mostrar_libros(libros,"d")
     try:
         seleccion = int(
             input("seleccione el numero de libro que quere tomar prestado: ")
         )
-        seleccion -= 1
-        libros[seleccion].cambiar_estado()
+        if 0 < seleccion <= len(libros):
+            if libros[seleccion-1].estado: 
+                libros[seleccion-1].cambiar_estado()
+            else:
+                print('El libro no esta disponible')
+        else:
+            print('Seleccion fuera de rango')
+            
     except ValueError:
         print("seleccion no válida")
-
-    return seleccion
-
 
 def devolver_libro(libros):
     mostrar_libros(libros, "p")
@@ -109,39 +114,15 @@ def devolver_libro(libros):
 
 
 def buscar_libro_autor(libros):
-    try:
-        seleccion = input("Ingrese el nombre del Autor: ").strip().lower()
-        indices_encontrados = [ i for i, libro in enumerate(libros) if libro.autor.lower() == seleccion]  
-        #CHATGPT tengo una lista con objetos y quiero buscar el indice del objeto segun un atributo del mismo python
-        # https://gemini.google.com/share/c2e90d768fd3 link de acceso a CHAT GPT
-        
-        libros_autor = []  
-             
-        for indice in indices_encontrados:
-            autor = libros[indice].titulo
-            
-            libros_autor.append(autor)
 
-    except:
+    autor_buscar = input("Ingrese el nombre del Autor: ").strip().lower()
+    listado_resultado = [elemento for elemento in libros if autor_buscar in elemento.autor.lower()]
+    if not listado_resultado: 
         print("Autor no encontrado")
-        
-    return libros_autor
-        
-def mostrar_lista(lista):
-    if not lista:
-        print('no hay libros para el autor buscado')
     else:
-        print('\nListado de libros del autor buscado\n')
-        for i, elemento in enumerate(lista):
-            print(f'{i+1} - {elemento}') 
-        
-
-
-def guardar_info_json(libros):
-    pass
-
-
-def mostrar_libros(libros):
+        mostrar_libros(listado_resultado,"f")
+                
+def mostrar_libros(libros,alcance):
     if libros:
         match alcance:
             case "t":  # Todos los libros

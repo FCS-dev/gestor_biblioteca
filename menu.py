@@ -14,8 +14,7 @@ def main():
                 modelo.mostrar_libros(libros, "t")
             case "2":
                 modelo.agregar_libro(libros)
-            case "3":  # Javier
-                # TODO Prestar
+            case "3":  
                 if cnt_prestados < len(libros):
                     modelo.prestar_libro(libros)
                 else:
@@ -27,12 +26,11 @@ def main():
                     print("\nNo hay libros pendientes para devolver")
             case "5":  # Javier
                 # TODO
-                libros_encontrados = modelo.buscar_libro_autor(libros)
-                modelo.mostrar_lista(libros_encontrados)
+                modelo.buscar_libro_autor(libros)
                 
             case "6":  # Franco
                 # TODO Agregar libros
-                modelo.guardar_info_json(libros)
+                utils.guardar_info_json(libros)
                 break
             case _:
                 print("\nOpción no válida")
