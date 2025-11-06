@@ -2,10 +2,16 @@ from pathlib import Path
 import json
 from modelo import Libro
 
+# Ruta y nombre del archivo donde se persiste el json
 DATA_PATH = Path(__file__).parent / "catalogo.json"
 
 
 def mostrar_menu():
+    """
+    Método. Muestra el menú de opciones y devuelve la opción elegida.
+    \nRetorno:
+    - 'opcion'. Str. Opción elegida.
+    """
     print("""
           \n
 ------ GESTOR DE BIBLIOTECA -----
@@ -19,13 +25,19 @@ def mostrar_menu():
 |    6. Salir y guardar en JSON |
 |===============================| 
           """)
-
     opcion = input("Ingrese su opcion -> ").strip()
-
     return opcion
 
 
 def cargar_libros():
+    """
+    Método. Comprueba si existe el archivo "catalogo.json" en la ruta
+    del aplicativo. Si existe, lee la info y retorna una lista.
+    Si no existe, genera una lista (predeterminada).
+    La lista contiene las instancias de la clase Libro().
+    \nRetorno:
+    - 'libros_def'. List. Lista de libros.
+    """
     libros_def = []
     if DATA_PATH.exists():
         try:
@@ -57,6 +69,11 @@ def cargar_libros():
 
 
 def guardar_info_json(libros):
+    """
+    Función. Graba en el "catalogo.json" la lista de libros, con sus estados actualizados.
+    Las lista en el app se guardan con clases Libro(), por lo que previamente se convierte
+    a una lista de diccionarios ("libros_json")
+    """
     # Convirtiendo cada class Libro() (los elementos de la lista "libros"),
     # en diccionarios, y agregarlos a una nueva lista libros_json
     libros_json = []
